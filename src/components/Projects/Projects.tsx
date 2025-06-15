@@ -1,48 +1,37 @@
 import React from 'react';
-
-interface Project {
-  title: string;
-  description: string;
-  link: string;
-  tech: string[];
-}
+import { motion } from 'framer-motion';
 
 const Projects: React.FC = () => {
-  const projects: Project[] = [
-    {
-      title: "Personal Portfolio",
-      description: "A responsive personal portfolio site built using React, TypeScript, and Tailwind CSS.",
-      link: "#",
-      tech: ["React", "TypeScript", "Tailwind"]
-    },
-    {
-      title: "API Backend with Spring Boot",
-      description: "A RESTful Java backend service with JWT auth, Dockerized and deployed via CI/CD.",
-      link: "#",
-      tech: ["Java", "Spring Boot", "Docker"]
-    }
-  ];
-
   return (
-    <section id="projects" className="py-16 px-6 bg-white text-gray-800">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-4 border-b border-gray-300 pb-2">Projects</h2>
-        <div className="grid gap-6 mt-6">
-          {projects.map((project, index) => (
-            <div key={index} className="border rounded shadow-sm p-4">
-              <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-              <p className="mb-2 text-sm">{project.description}</p>
-              <div className="flex flex-wrap gap-2 text-xs text-gray-600">
-                {project.tech.map(tech => (
-                  <span key={tech} className="bg-gray-200 px-2 py-1 rounded">{tech}</span>
-                ))}
-              </div>
-              <a href={project.link} className="text-blue-600 text-sm mt-2 inline-block">View Project →</a>
-            </div>
-          ))}
+    <motion.section
+      id="projects"
+      className="min-h-screen px-6 py-20 bg-gray-50 text-gray-800"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-12">Projects</h2>
+
+        {/* Sample Project */}
+        <div className="bg-white shadow-md rounded-xl p-6 mb-6 text-left transition hover:shadow-xl">
+          <h3 className="text-2xl font-semibold mb-2">Task Manager App</h3>
+          <p className="text-sm mb-2 text-gray-600">
+            A responsive task management app built using React, TypeScript, Firebase. It allows users to create and manage tasks with real-time sync and auth.
+          </p>
+          <div className="text-sm text-blue-700 flex gap-4 mt-2">
+            <a href="https://github.com/john/task-manager" target="_blank" rel="noreferrer" className="underline">
+              GitHub
+            </a>
+            <a href="https://task-manager.vercel.app" target="_blank" rel="noreferrer" className="underline">
+              Live Demo
+            </a>
+          </div>
         </div>
+
+        {/* Add more projects below */}
       </div>
-    </section>
+    </motion.section>
   );
 };
 
